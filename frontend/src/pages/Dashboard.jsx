@@ -42,6 +42,7 @@ export default function Dashboard() {
   ];
   // delete functions
  const handleDeleteExpense = async (id) => {
+  if (!window.confirm("Are you sure you want to delete this expense?")) return;
   try {
     await API.delete(`/expenses/${id}`);
     setExpenses(prev => prev.filter(e => e._id !== id));
@@ -52,6 +53,7 @@ export default function Dashboard() {
 };
 
 const handleDeleteIncome = async (id) => {
+  if (!window.confirm("Are you sure you want to delete this expense?")) return;
   try {
     await API.delete(`/income/${id}`);
     setIncome(prev => prev.filter(i => i._id !== id));
