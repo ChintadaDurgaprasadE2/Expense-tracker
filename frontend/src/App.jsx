@@ -11,20 +11,21 @@ import AddIncome from "./pages/AddIncome.jsx";
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+      <div className="app-shell">
+        <Navbar />
 
-      <Routes>
-        {/* PUBLIC ROUTES */}
-       <Route path="/" element={<Register />} />
-<Route path="/login" element={<Login />} />
-<Route path="/dashboard" element={<Dashboard />} />
+        <Routes>
+          {/* PUBLIC ROUTES */}
+          <Route path="/" element={<Register />} />
+          <Route path="/login" element={<Login />} />
 
-        {/* PRIVATE ROUTES */}
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/add-expense" element={<AddExpense />} />
-        <Route path="/add-income" element={<AddIncome />} />
-        {/* <Route path="/admin" element={<AdminDashboard />} /> */}
-      </Routes>
+          {/* PRIVATE ROUTES */}
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/add-expense" element={<AddExpense />} />
+          <Route path="/add-income" element={<AddIncome />} />
+          {/* <Route path="/admin" element={<AdminDashboard />} /> */}
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

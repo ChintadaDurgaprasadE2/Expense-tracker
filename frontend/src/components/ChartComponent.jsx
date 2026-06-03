@@ -3,7 +3,8 @@ import {
   Pie,
   Cell,
   Tooltip,
-  Legend
+  Legend,
+  ResponsiveContainer
 } from "recharts";
 
 const COLORS = ["#22c55e", "#ef4444"]; // green = income, red = expense
@@ -11,14 +12,15 @@ const COLORS = ["#22c55e", "#ef4444"]; // green = income, red = expense
 export default function ChartComponent({ data }) {
   return (
     <div className="chart-wrapper">
-      <PieChart width={450} height={350}>
+      <ResponsiveContainer width="100%" height={350}>
+        <PieChart>
         <Pie
           data={data}
           dataKey="value"
           nameKey="name"
           cx="50%"
           cy="50%"
-          outerRadius={100}
+          outerRadius={110}
           label={({ name, percent }) =>
             `${name}: ${(percent * 100).toFixed(0)}%`
           }
@@ -28,12 +30,10 @@ export default function ChartComponent({ data }) {
           ))}
         </Pie>
 
-        {/* Tooltip on hover */}
         <Tooltip />
-
-        {/* Legend (Income / Expense) */}
-        <Legend />
+        <Legend verticalAlign="bottom" height={36} />
       </PieChart>
+      </ResponsiveContainer>
     </div>
   );
 }
