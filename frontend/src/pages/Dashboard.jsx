@@ -41,42 +41,62 @@ export default function Dashboard() {
     { name: "Expense", value: totalExpense }
   ];
   // delete functions
-  const handleDeleteExpense = async (id) => {
-  await API.delete(`/expenses/${id}`);
-  fetchData(); // refresh
+ const handleDeleteExpense = async (id) => {
+  try {
+    await API.delete(`/expenses/${id}`);
+    setExpenses(prev => prev.filter(e => e._id !== id));
+
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const handleDeleteIncome = async (id) => {
-  await API.delete(`/income/${id}`);
-  fetchData();
+  try {
+    await API.delete(`/income/${id}`);
+    setIncome(prev => prev.filter(i => i._id !== id));
+
+  } catch (err) {
+    console.log(err);
+  }
 };
 // edit functions
 const handleEditExpense = async (item) => {
   const newAmount = prompt("Enter new amount", item.amount);
-
   if (!newAmount) return;
 
-  await API.put(`/expenses/${item._id}`, {
-    ...item,
-    amount: newAmount
-  });
+  try {
+    const res = await API.put(`/expenses/${item._id}`, {
+      ...item,
+      amount: newAmount
+    });
+    setExpenses(prev =>
+      prev.map(e => (e._id === item._id ? res.data : e))
+    );
 
-  fetchData();
+  } catch (err) {
+    console.log(err);
+  }
 };
-
 const handleEditIncome = async (item) => {
   const newAmount = prompt("Enter new amount", item.amount);
-
   if (!newAmount) return;
 
-  await API.put(`/income/${item._id}`, {
-    ...item,
-    amount: newAmount
-  });
+  try {
+    const res = await API.put(`/income/${item._id}`, {
+      ...item,
+      amount: newAmount
+    });
 
-  fetchData();
+    // ✅ update UI instantly
+    setIncome(prev =>
+      prev.map(i => (i._id === item._id ? res.data : i))
+    );
+
+  } catch (err) {
+    console.log(err);
+  }
 };
-
   return (
     <div className="container">
       <h2>Dashboard</h2>
