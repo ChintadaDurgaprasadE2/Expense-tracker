@@ -10,7 +10,7 @@ const COLORS = ["#22c55e", "#ef4444"]; // green = income, red = expense
 
 export default function ChartComponent({ data }) {
   return (
-    <div style={{ display: "flex", justifyContent: "center"}}>
+    <div className="chart-wrapper">
       <PieChart width={450} height={350}>
         <Pie
           data={data}
