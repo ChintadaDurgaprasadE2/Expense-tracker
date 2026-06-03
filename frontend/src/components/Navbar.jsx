@@ -15,7 +15,7 @@ export default function Navbar() {
       <Link to="/dashboard">Dashboard</Link>
       <Link to="/add-expense">Add Expense</Link>
       <Link to="/add-income">Add Income</Link>
-      <Link to="/admin">Admin</Link>
+      {/* <Link to="/admin">Admin</Link> */}
 
       <button onClick={logout}>Logout</button>
     </nav>

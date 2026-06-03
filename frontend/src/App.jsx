@@ -6,7 +6,7 @@ import Register from "./pages/Register.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import AddExpense from "./pages/AddExpense.jsx";
 import AddIncome from "./pages/AddIncome.jsx";
-import AdminDashboard from "./pages/AdminDashboard.jsx";
+// import AdminDashboard from "./pages/AdminDashboard.jsx";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/add-expense" element={<AddExpense />} />
         <Route path="/add-income" element={<AddIncome />} />
-        <Route path="/admin" element={<AdminDashboard />} />
+        {/* <Route path="/admin" element={<AdminDashboard />} /> */}
       </Routes>
     </BrowserRouter>
   );
