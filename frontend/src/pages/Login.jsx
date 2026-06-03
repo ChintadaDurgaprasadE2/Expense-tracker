@@ -2,7 +2,7 @@ import { useState } from "react";
 import API from "../api.jsx";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Login({ onLogin }) {
   const [form, setForm] = useState({ email: "", password: "" });
   const nav = useNavigate();
 
@@ -11,6 +11,7 @@ export default function Login() {
       const res = await API.post("/auth/login", form);
 
       localStorage.setItem("token", res.data.token);
+      onLogin?.();
 
       alert("Login Successful ✅");
 
@@ -31,7 +32,7 @@ export default function Login() {
       <input type="password" placeholder="Password"
         onChange={e => setForm({ ...form, password: e.target.value })} />
 
-      <button onClick={handleLogin}>Login</button>
+      <button className="btn btn-auth" onClick={handleLogin}>Login</button>
 
       {/* 👉 Link to register */}
       <p>New user? <a href="/">Register</a></p>

@@ -41,7 +41,7 @@ export default function AddExpense() {
         onChange={e => setData({ ...data, category: e.target.value })}
       />
 
-      <button onClick={handleSubmit}>Add Expense</button>
+      <button className="btn btn-fixed" onClick={handleSubmit}>Add Expense</button>
     </div>
   );
 }

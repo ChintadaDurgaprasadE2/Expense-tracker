@@ -87,3 +87,63 @@ export const login = async (req, res) => {
     res.status(500).json({ msg: "Server Error" });
   }
 };
+
+export const getProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select("name email");
+    if (!user) return res.status(404).json({ msg: "User not found" });
+
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ msg: "Server Error" });
+  }
+};
+
+export const updateProfile = async (req, res) => {
+  const { name, email } = req.body;
+
+  try {
+    const user = await User.findById(req.userId);
+    if (!user) return res.status(404).json({ msg: "User not found" });
+
+    if (email && email !== user.email) {
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        return res.status(400).json({ msg: "Email already in use" });
+      }
+    }
+
+    user.name = name || user.name;
+    user.email = email || user.email;
+    await user.save();
+
+    res.json({ msg: "Profile updated successfully", name: user.name, email: user.email });
+  } catch (err) {
+    res.status(500).json({ msg: "Server Error" });
+  }
+};
+
+export const changePassword = async (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+
+  if (!currentPassword || !newPassword) {
+    return res.status(400).json({ msg: "Both passwords are required" });
+  }
+
+  try {
+    const user = await User.findById(req.userId);
+    if (!user) return res.status(404).json({ msg: "User not found" });
+
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ msg: "Current password is incorrect" });
+    }
+
+    user.password = await bcrypt.hash(newPassword, 10);
+    await user.save();
+
+    res.json({ msg: "Password changed successfully" });
+  } catch (err) {
+    res.status(500).json({ msg: "Server Error" });
+  }
+};

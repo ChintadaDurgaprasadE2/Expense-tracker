@@ -32,7 +32,7 @@ export default function AddIncome() {
         onChange={e => setData({ ...data, amount: e.target.value })}
       />
 
-      <button onClick={handleSubmit}>Add Income</button>
+      <button className="btn btn-fixed" onClick={handleSubmit}>Add Income</button>
     </div>
   );
 }

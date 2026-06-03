@@ -33,7 +33,7 @@ export default function Register() {
       <input type="password" placeholder="Password"
         onChange={e => setForm({ ...form, password: e.target.value })} />
 
-      <button onClick={handleRegister}>Register</button>
+      <button className="btn btn-auth" onClick={handleRegister}>Register</button>
 
       {/* 👉 Link to login */}
       <p>Already have account? <a href="/login">Login</a></p>

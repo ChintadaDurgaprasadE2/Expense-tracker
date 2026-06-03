@@ -1,23 +1,42 @@
-import { Link } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
-export default function Navbar() {
-  const token = localStorage.getItem("token");
+export default function Navbar({ isAuthenticated, onLogout }) {
+  const navigate = useNavigate();
 
-  if (!token) return null;
+  if (!isAuthenticated) return null;
 
   const logout = () => {
     localStorage.removeItem("token");
-    window.location.href = "/";
+    onLogout?.();
+    navigate("/");
   };
 
   return (
-    <nav>
-      <Link to="/dashboard">Dashboard</Link>
-      <Link to="/add-expense">Add Expense</Link>
-      <Link to="/add-income">Add Income</Link>
-      {/* <Link to="/admin">Admin</Link> */}
+    <nav className="navbar">
+      <div className="nav-brand">Expense Tracker</div>
 
-      <button onClick={logout}>Logout</button>
+      <div className="nav-group">
+        <NavLink className={({ isActive }) => `nav-link${isActive ? " active" : ""}`} to="/dashboard">
+          Dashboard
+        </NavLink>
+        <NavLink className={({ isActive }) => `nav-link${isActive ? " active" : ""}`} to="/add-expense">
+          Add Expense
+        </NavLink>
+        <NavLink className={({ isActive }) => `nav-link${isActive ? " active" : ""}`} to="/add-income">
+          Add Income
+        </NavLink>
+        <NavLink className={({ isActive }) => `nav-link${isActive ? " active" : ""}`} to="/graphs">
+          Graphs
+        </NavLink>
+        <NavLink className={({ isActive }) => `nav-link${isActive ? " active" : ""}`} to="/reports">
+          Reports
+        </NavLink>
+        <NavLink className={({ isActive }) => `nav-link${isActive ? " active" : ""}`} to="/settings">
+          Settings
+        </NavLink>
+      </div>
+
+      <button className="logout-button" onClick={logout}>Logout</button>
     </nav>
   );
 }
