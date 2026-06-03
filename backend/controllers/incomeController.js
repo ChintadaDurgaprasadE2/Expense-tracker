@@ -23,3 +23,26 @@ export const getIncome = async (req, res) => {
     res.status(500).json({ msg: "Error fetching income" });
   }
 };
+// UPDATE INCOME
+export const updateIncome = async (req, res) => {
+  try {
+    const updated = await Income.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.json(updated);
+  } catch {
+    res.status(500).json({ msg: "Error updating income" });
+  }
+};
+
+// DELETE INCOME
+export const deleteIncome = async (req, res) => {
+  try {
+    await Income.findByIdAndDelete(req.params.id);
+    res.json({ msg: "Income deleted" });
+  } catch {
+    res.status(500).json({ msg: "Error deleting income" });
+  }
+};

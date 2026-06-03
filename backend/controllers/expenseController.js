@@ -43,3 +43,26 @@ export const getExpenses = async (req, res) => {
     res.status(500).json({ msg: "Error fetching expenses" });
   }
 };
+// UPDATE EXPENSE
+export const updateExpense = async (req, res) => {
+  try {
+    const updated = await Expense.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.json(updated);
+  } catch {
+    res.status(500).json({ msg: "Error updating expense" });
+  }
+};
+
+// DELETE EXPENSE
+export const deleteExpense = async (req, res) => {
+  try {
+    await Expense.findByIdAndDelete(req.params.id);
+    res.json({ msg: "Expense deleted" });
+  } catch {
+    res.status(500).json({ msg: "Error deleting expense" });
+  }
+};

@@ -1,11 +1,13 @@
 import express from "express";
 import auth from "../middleware/authMiddleware.js";
-import { addExpense, getExpenses } from "../controllers/expenseController.js";
+import { addExpense, getExpenses ,updateExpense,
+  deleteExpense} from "../controllers/expenseController.js";
 
 const router = express.Router();
 
 router.post("/", auth, addExpense);
 router.get("/", auth, getExpenses);
-// router.delete("/:id", auth, deleteExpense);
+router.put("/:id", auth, updateExpense);
+router.delete("/:id", auth, deleteExpense);
 
 export default router;
