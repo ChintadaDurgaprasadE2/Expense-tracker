@@ -69,10 +69,25 @@ dotenv.config();
 
 const app = express();
 
-// ✅ Correct CORS
+// ✅ CORS configuration for your frontend + local dev
+const allowedOrigins = [
+  "https://expense-tracker-virid-phi-27.vercel.app",
+  "http://localhost:5173",
+  "http://localhost:3000"
+];
+
 app.use(cors({
-  origin: "https://expense-tracker-virid-phi-27.vercel.app"
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS policy: origin not allowed"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
+app.options("*", cors());
 
 app.use(express.json());
 
