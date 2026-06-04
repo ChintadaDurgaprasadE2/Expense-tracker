@@ -91,10 +91,18 @@ app.options("*", cors());
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.json({ status: "Expense Tracker API", message: "Backend is running" });
+});
+
 // ✅ Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/expenses", expenseRoutes);
 app.use("/api/income", incomeRoutes);
+
+app.use((req, res) => {
+  res.status(404).json({ error: "Route not found" });
+});
 
 // ✅ MongoDB
 mongoose.connect(process.env.MONGO_URI)
