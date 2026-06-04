@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://expense-tracker-51lt.onrender.com"
+  baseURL: "https://expense-tracker-51lt.onrender.com/api"
 });
 
 API.interceptors.request.use((req) => {
