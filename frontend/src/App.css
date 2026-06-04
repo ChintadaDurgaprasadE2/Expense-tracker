@@ -443,23 +443,475 @@ button + p a {
   }
 }
 
-@media (max-width: 680px) {
-  .container {
-    padding: 90px 14px 20px;
+@media (max-width: 768px) {
+  :root {
+    font-size: 15px;
   }
 
-  .card,
-  .form-box {
-    padding: 22px;
-    border-radius: 20px;
+  .navbar {
+    padding: 14px 16px;
+    gap: 0.5rem;
+  }
+
+  .nav-brand {
+    font-size: 1rem;
+  }
+
+  .nav-group {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   .nav-link,
   .logout-button {
     width: 100%;
+    padding: 0.85rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .container {
+    padding: 80px 16px 20px;
+    width: 100%;
+  }
+
+  .page-header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .page-header h2 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+  }
+
+  .dashboard {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .summary-card {
+    min-height: 140px;
+    padding: 18px;
+  }
+
+  .summary-card h3 {
+    font-size: 0.85rem;
+  }
+
+  .summary-card p {
+    font-size: 1.6rem;
+  }
+
+  .card {
+    padding: 18px;
+    margin: 16px 0;
+    border-radius: 18px;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+  }
+
+  .chart-wrapper {
+    min-height: 280px;
+  }
+
+  .form-box {
+    max-width: 100%;
+    margin: 60px auto;
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .form-box h2 {
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 12px 14px;
+    font-size: 16px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 0.95rem;
   }
 
   .filter-row {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .filter-row label {
+    font-size: 0.9rem;
+  }
+
+  .expense-item,
+  .history-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .expense-item span,
+  .history-item span {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .expense-item button,
+  .history-item button {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    border-radius: 10px;
+  }
+
+  .btn-fixed {
+    width: 100%;
+    padding: 12px 14px;
+  }
+
+  .btn-auth {
+    width: 100%;
+    padding: 12px 14px;
+  }
+
+  .settings-form {
+    gap: 14px;
+  }
+
+  .success-card,
+  .error-card {
+    padding: 14px;
+    font-size: 0.95rem;
+    border-radius: 14px;
   }
 }
+
+@media (max-width: 680px) {
+  :root {
+    font-size: 14px;
+  }
+
+  .container {
+    padding: 70px 12px 16px;
+  }
+
+  .navbar {
+    padding: 12px 14px;
+    gap: 0.4rem;
+  }
+
+  .nav-brand {
+    font-size: 0.95rem;
+  }
+
+  .nav-link,
+  .logout-button {
+    padding: 0.75rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .page-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .dashboard {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .summary-card {
+    min-height: 120px;
+    padding: 14px;
+    gap: 0.5rem;
+  }
+
+  .summary-card h3 {
+    font-size: 0.8rem;
+  }
+
+  .summary-card p {
+    font-size: 1.4rem;
+  }
+
+  .card {
+    padding: 14px;
+    margin: 12px 0;
+    border-radius: 16px;
+  }
+
+  .card h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .chart-wrapper {
+    min-height: 250px;
+  }
+
+  .form-box {
+    margin: 50px auto;
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .form-box h2 {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 10px 12px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+
+  button + p {
+    font-size: 0.9rem;
+    margin-top: 14px;
+  }
+
+  .filter-row {
+    gap: 10px;
+  }
+
+  .filter-row label {
+    font-size: 0.85rem;
+    gap: 6px;
+  }
+
+  .expense-item,
+  .history-item {
+    padding: 10px;
+    gap: 6px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+  }
+
+  .expense-item span,
+  .history-item span {
+    font-size: 0.9rem;
+  }
+
+  .expense-item button,
+  .history-item button {
+    width: 100%;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+  }
+
+  .btn {
+    padding: 6px 8px;
+    font-size: 0.85rem;
+    border-radius: 8px;
+  }
+
+  .btn-fixed,
+  .btn-auth {
+    padding: 10px 12px;
+  }
+
+  .muted {
+    font-size: 0.9rem;
+  }
+
+  .settings-form {
+    gap: 12px;
+  }
+
+  .success-card,
+  .error-card {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    font-size: 13px;
+  }
+
+  .navbar {
+    padding: 10px 12px;
+  }
+
+  .nav-brand {
+    font-size: 0.9rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .nav-group {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-link,
+  .logout-button {
+    padding: 0.65rem 0.7rem;
+    font-size: 0.8rem;
+    border-radius: 12px;
+  }
+
+  .container {
+    padding: 60px 10px 14px;
+    width: 100%;
+  }
+
+  .page-header {
+    margin-bottom: 16px;
+  }
+
+  .page-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .dashboard {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .summary-card {
+    min-height: 110px;
+    padding: 12px;
+    gap: 0.4rem;
+  }
+
+  .summary-card h3 {
+    font-size: 0.75rem;
+  }
+
+  .summary-card p {
+    font-size: 1.2rem;
+  }
+
+  .card {
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 14px;
+  }
+
+  .card h3 {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+
+  .chart-wrapper {
+    min-height: 220px;
+  }
+
+  .form-box {
+    margin: 40px auto;
+    padding: 14px;
+    border-radius: 16px;
+    max-width: 100%;
+  }
+
+  .form-box h2 {
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+  }
+
+  input,
+  select,
+  textarea {
+    padding: 9px 11px;
+    font-size: 16px;
+    margin-bottom: 9px;
+    border-radius: 9px;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+
+  button + p {
+    font-size: 0.85rem;
+    margin-top: 12px;
+  }
+
+  .filter-row {
+    gap: 9px;
+  }
+
+  .filter-row label {
+    font-size: 0.8rem;
+    gap: 5px;
+  }
+
+  .expense-item,
+  .history-item {
+    padding: 9px;
+    gap: 5px;
+    margin-bottom: 7px;
+  }
+
+  .expense-item span,
+  .history-item span {
+    font-size: 0.85rem;
+  }
+
+  .expense-item button,
+  .history-item button {
+    width: 48%;
+    padding: 5px 8px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+  }
+
+  .btn {
+    padding: 5px 7px;
+    font-size: 0.8rem;
+  }
+
+  .btn-fixed,
+  .btn-auth {
+    width: 100%;
+    padding: 10px 10px;
+  }
+
+  .muted {
+    font-size: 0.85rem;
+  }
+
+  .settings-form {
+    gap: 10px;
+  }
+
+  .success-card,
+  .error-card {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
+}
+
