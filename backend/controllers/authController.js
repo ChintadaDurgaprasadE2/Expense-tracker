@@ -43,7 +43,7 @@ export const register = async (req, res) => {
       return res.status(400).json({ msg: "User already exists" });
     }
 
-    const hashed = await bcrypt.hash(password, 10);
+    const hashed = await bcrypt.hash(password, 8);
 
     const user = await User.create({
       name,
@@ -139,7 +139,7 @@ export const changePassword = async (req, res) => {
       return res.status(400).json({ msg: "Current password is incorrect" });
     }
 
-    user.password = await bcrypt.hash(newPassword, 10);
+    user.password = await bcrypt.hash(newPassword, 8);
     await user.save();
 
     res.json({ msg: "Password changed successfully" });

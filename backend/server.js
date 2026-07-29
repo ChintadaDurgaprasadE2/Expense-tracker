@@ -103,8 +103,13 @@ app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
 });
 
-// ✅ MongoDB
-mongoose.connect(process.env.MONGO_URI)
+// ✅ MongoDB with optimized connection pool
+mongoose.connect(process.env.MONGO_URI, {
+  maxPoolSize: 10,
+  serverSelectionTimeoutMS: 5000,
+  socketTimeoutMS: 45000,
+  connectTimeoutMS: 10000
+})
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
