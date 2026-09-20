@@ -915,3 +915,182 @@ button + p a {
   }
 }
 
+/* =========================================================
+   GUEST NAVBAR & HIGHLIGHTED AUTH FOR NEW USERS
+   ========================================================= */
+
+.guest-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+}
+
+.nav-guest-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.btn-guest-login {
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.6);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-guest-login:hover,
+.btn-guest-login.active {
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.4);
+  background: rgba(14, 165, 233, 0.12);
+}
+
+.btn-guest-register {
+  padding: 9px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  box-shadow: 0 4px 18px rgba(14, 165, 233, 0.35);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-guest-register:hover,
+.btn-guest-register.active {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(14, 165, 233, 0.5);
+  filter: brightness(1.1);
+}
+
+/* Auth Card Tabs */
+.auth-tab-group {
+  display: flex;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 16px;
+  padding: 5px;
+  margin-bottom: 24px;
+  gap: 6px;
+}
+
+.auth-tab {
+  flex: 1;
+  text-align: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.auth-tab:hover {
+  color: #f1f5f9;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.auth-tab.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.3);
+}
+
+.badge-new {
+  background: #f43f5e;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 999px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(244, 63, 94, 0.4);
+}
+
+/* Highlight Banner for New Users */
+.new-user-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(99, 102, 241, 0.12));
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 16px;
+  padding: 14px 18px;
+  margin-bottom: 22px;
+  text-align: left;
+}
+
+.new-user-banner .sparkle-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.new-user-banner strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #38bdf8;
+  margin-bottom: 2px;
+}
+
+.new-user-banner p {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Bottom switch prompt */
+.auth-switch-prompt {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.auth-switch-prompt span {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.btn-highlight-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #38bdf8;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(14, 165, 233, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-highlight-link:hover {
+  background: rgba(14, 165, 233, 0.22);
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: translateY(-1px);
+  color: #7dd3fc;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.25);
+}
+
+

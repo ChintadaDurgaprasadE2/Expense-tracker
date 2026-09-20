@@ -1,6 +1,6 @@
 import { useState } from "react";
 import API from "../api.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Register() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -21,7 +21,7 @@ export default function Register() {
     try {
       await API.post("/auth/register", form);
 
-      alert("Registered Successfully ✅");
+      alert("Registered Successfully ✅ Please log in.");
       nav("/login");
 
     } catch (err) {
@@ -42,7 +42,26 @@ export default function Register() {
 
   return (
     <div className="form-box">
-      <h2>Register</h2>
+      {/* 🌟 Tab switcher */}
+      <div className="auth-tab-group">
+        <Link to="/login" className="auth-tab">
+          Login
+        </Link>
+        <Link to="/" className="auth-tab active">
+          <span className="badge-new">New</span> Register
+        </Link>
+      </div>
+
+      {/* 🌟 Welcome Banner for New Users */}
+      <div className="new-user-banner">
+        <span className="sparkle-icon">👋</span>
+        <div>
+          <strong>New to Expense Tracker?</strong>
+          <p>Create your free account to track expenses, income & graphs!</p>
+        </div>
+      </div>
+
+      <h2>Create Account</h2>
 
       {errorMsg && (
         <p style={{ color: "#fb7185", marginBottom: "12px", fontSize: "0.9rem", textAlign: "center" }}>
@@ -53,7 +72,7 @@ export default function Register() {
       <form onSubmit={handleRegister}>
         <input
           type="text"
-          placeholder="Name"
+          placeholder="Full Name"
           value={form.name}
           required
           onChange={e => setForm({ ...form, name: e.target.value })}
@@ -61,7 +80,7 @@ export default function Register() {
 
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Email Address"
           value={form.email}
           required
           onChange={e => setForm({ ...form, email: e.target.value })}
@@ -81,12 +100,17 @@ export default function Register() {
           disabled={loading}
           style={{ opacity: loading ? 0.7 : 1, cursor: loading ? "not-allowed" : "pointer" }}
         >
-          {loading ? "Registering..." : "Register"}
+          {loading ? "Registering..." : "✨ Create Free Account"}
         </button>
       </form>
 
-      {/* 👉 Link to login */}
-      <p>Already have account? <a href="/login">Login</a></p>
+      {/* 🌟 Highlighted Switch to Login */}
+      <div className="auth-switch-prompt">
+        <span>Already have an account?</span>
+        <Link to="/login" className="btn-highlight-link">
+          Sign In ➔
+        </Link>
+      </div>
     </div>
   );
 }

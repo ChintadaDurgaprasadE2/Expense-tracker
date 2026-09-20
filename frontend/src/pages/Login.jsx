@@ -1,6 +1,6 @@
 import { useState } from "react";
 import API from "../api.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Login({ onLogin }) {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -34,7 +34,7 @@ export default function Login({ onLogin }) {
           ? "Server took too long to respond. Render may be waking up, please retry in a few seconds."
           : !err.response
           ? "Cannot connect to backend server. Make sure your local server is running on port 5000."
-          : "Login Failed ❌");
+          : "Invalid Email or Password ❌");
 
       setErrorMsg(message);
       alert(message);
@@ -45,7 +45,17 @@ export default function Login({ onLogin }) {
 
   return (
     <div className="form-box">
-      <h2>Login</h2>
+      {/* 🌟 Tab switcher */}
+      <div className="auth-tab-group">
+        <Link to="/login" className="auth-tab active">
+          Login
+        </Link>
+        <Link to="/" className="auth-tab">
+          <span className="badge-new">New</span> Register
+        </Link>
+      </div>
+
+      <h2>Welcome Back</h2>
 
       {errorMsg && (
         <p style={{ color: "#fb7185", marginBottom: "12px", fontSize: "0.9rem", textAlign: "center" }}>
@@ -56,7 +66,7 @@ export default function Login({ onLogin }) {
       <form onSubmit={handleLogin}>
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Email Address"
           value={form.email}
           required
           onChange={e => setForm({ ...form, email: e.target.value })}
@@ -76,12 +86,17 @@ export default function Login({ onLogin }) {
           disabled={loading}
           style={{ opacity: loading ? 0.7 : 1, cursor: loading ? "not-allowed" : "pointer" }}
         >
-          {loading ? "Logging in..." : "Login"}
+          {loading ? "Logging in..." : "Sign In"}
         </button>
       </form>
 
-      {/* 👉 Link to register */}
-      <p>New user? <a href="/">Register</a></p>
+      {/* 🌟 Highlighted prompt for new users */}
+      <div className="auth-switch-prompt">
+        <span>Are you a new user?</span>
+        <Link to="/" className="btn-highlight-link">
+          ✨ Create New Account ➔
+        </Link>
+      </div>
     </div>
   );
 }
